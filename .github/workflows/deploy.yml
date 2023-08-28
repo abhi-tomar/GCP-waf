@@ -23,5 +23,6 @@ jobs:
         export_default_credentials: true
         
     - name: Deploy Cloud Armor Policy
-      run: gcloud deployment-manager deployments create abhishek-cloud-armor-deployment \
-          --config=cloud_armor_policy.yml
+      run: |
+          gcloud compute security-policies create abhishek-cloud-armor-policy \
+            --config=cloud_armor_policy.yml
