@@ -1,4 +1,4 @@
-name: Deploy Cloud Armor Policy
+name: Deploy Cloud Armor Policy testing
 
 on:
   push:
