@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - ''**/cloud_armor_policy.yml'
+      - '**/cloud_armor_policy.yml'
 
 jobs:
   deploy:
