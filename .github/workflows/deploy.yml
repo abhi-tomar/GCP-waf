@@ -21,4 +21,4 @@ jobs:
       run: |-
         gcloud auth login --brief --cred-file="${{ steps.auth.outputs.credentials_file_path }}"
         gcloud services list --project testing-project-397510
-        gcloud deployment-manager deployments create abhishek-cloud-armor-deployment --config=cloud_armor_policy.yml
+        gcloud deployment-manager deployments create abhishek-cloud-armor-deployment --config=cloud_armor_policy.yml --project=testing-project-397510
