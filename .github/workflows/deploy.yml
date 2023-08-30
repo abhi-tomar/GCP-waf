@@ -1,4 +1,4 @@
-name: Deploy template in deployment manager
+name: Deploy the template in deployment manager
 on:
   push:
     branches:
