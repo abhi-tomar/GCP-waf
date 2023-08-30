@@ -1,6 +1,10 @@
 name: List services in GCP
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - '**/cloud_armor_policy.yml'
 
 permissions:
   id-token: write
