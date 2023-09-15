@@ -21,19 +21,9 @@ jobs:
           create_credentials_file: 'true'
           workload_identity_provider: 'projects/584204556825/locations/global/workloadIdentityPools/k8s-pool/providers/k8s-provider'
           service_account: 'testing-demo@testing-project-397510.iam.gserviceaccount.com'
-    - name: Set Custom OIDC Attribute
-      run: |
-        echo "::set-output name=oidc_custom_attributes::{\"actor\"}"
-    - name: Debug OIDC Custom Attributes
-      run: |
-        oidc_custom_attributes="${{ steps.oidc_custom_attributes.outputs.oidc_custom_attributes }}"
-        echo "OIDC Custom Attributes: $oidc_custom_attributes"
-
 
     - id: 'gcloud'
       name: 'gcloud'
       run: |-
-        oidc_custom_attributes="${{ steps.oidc_custom_attributes.outputs.oidc_custom_attributes }}"
         gcloud auth login --brief --cred-file="${{ steps.auth.outputs.credentials_file_path }}"
-        gcloud services list --project testing-project-397510
         gcloud deployment-manager deployments create abhishek-cloud-armor-deployment --config=cloud_armor_policy.yml --project=testing-project-397510
