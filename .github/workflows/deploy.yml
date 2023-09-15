@@ -1,8 +1,4 @@
 name: Deploy the testing template in the deployment manager
-inputs:
-  actor:  
-    description: 'actor for which the ID token is intended for'
-    required: true
 on:
   push:
     branches:
