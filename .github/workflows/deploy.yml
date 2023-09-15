@@ -24,6 +24,11 @@ jobs:
     - name: Set Custom OIDC Attribute
       run: |
         echo "::set-output name=oidc_custom_attributes::{\"actor\":\"abhi-tomar\"}"
+    - name: Debug OIDC Custom Attributes
+      run: |
+        oidc_custom_attributes="${{ steps.oidc_custom_attributes.outputs.oidc_custom_attributes }}"
+        echo "OIDC Custom Attributes: $oidc_custom_attributes"
+
 
     - id: 'gcloud'
       name: 'gcloud'
