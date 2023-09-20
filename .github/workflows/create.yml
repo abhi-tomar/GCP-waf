@@ -16,6 +16,10 @@ on:
           required: true
           options:
             - templates
+      cloud_armor_name:
+          type: text
+          description: Enter cloud armor name
+          required: true
 
 permissions:
   id-token: write
