@@ -3,11 +3,9 @@ on:
   workflow_dispatch:
     inputs:
       phase:
-        description: 'Phase'
-        required: true
-      choice:
-          type: choice
-          description: Select Phase      
+          type: phase
+          description: Select Phase  
+          required: true
           options:
             - 'p'
             - 'd'
