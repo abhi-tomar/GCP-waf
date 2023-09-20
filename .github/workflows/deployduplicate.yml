@@ -3,9 +3,8 @@ on:
   workflow_dispatch:
     inputs:
       phase:
-        description: 'Number of Octocats'
-        required: false
-        default: '1'
+        description: 'Phase'
+        required: true
 
 permissions:
   id-token: write
