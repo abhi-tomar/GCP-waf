@@ -35,12 +35,6 @@ jobs:
           workload_identity_provider: 'projects/584204556825/locations/global/workloadIdentityPools/k8s-pool/providers/k8s-provider'
           service_account: 'testing-demo@testing-project-397510.iam.gserviceaccount.com'
 
-    - name: Make GET request
-      run: |
-        response=$(curl -s "https://repo.sj.lithium.com/config/values?phase=qa&key=host")
-        echo "$response"  # Optional: Print the response for debugging
-        echo "::set-output name=response::$response"  # Set an output variable
-
     - id: 'gcloud'
       name: 'gcloud'
       run: |-
