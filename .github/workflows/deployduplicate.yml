@@ -5,7 +5,10 @@ on:
       phase:
         description: 'Phase'
         required: true
-        default: 'p,s,d'
+        options:
+          - 'p'
+          - 'd'
+          - 'q'
 
 permissions:
   id-token: write
