@@ -33,4 +33,4 @@ jobs:
       name: 'gcloud'
       run: |-
         gcloud auth login --brief --cred-file="${{ steps.auth.outputs.credentials_file_path }}"
-        gcloud deployment-manager deployments create abhishek-cloud-armor-deployment --config=cloud_armor_policy.yml --project=testing-project-397510
+        gcloud deployment-manager deployments create abhishek-cloud-armor-deployment --config=newfolder/cloud_armor_policy.yml --project=testing-project-397510
