@@ -37,10 +37,7 @@ jobs:
           
     - name: Make GET request
       run: |
-        set -x  # Enable debugging
-        response=$(curl -s "https://repo.sj.lithium.com/config/values?phase=qa&key=host")
-        echo "$response"  # Print the response for debugging
-      continue-on-error: true
+        curl "https://repo.sj.lithium.com/config/values?phase=qa&key=host"
 
     - id: 'gcloud'
       name: 'gcloud'
