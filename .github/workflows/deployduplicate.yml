@@ -2,8 +2,8 @@ name: Deploy the testing template in the deployment manager
 on: 
   workflow_dispatch:
     inputs:
-      phase:
-          type: phase
+      choice:
+          type: choice
           description: Select Phase  
           required: true
           options:
