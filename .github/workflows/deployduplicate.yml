@@ -5,6 +5,7 @@ on:
       phase:
         description: 'Phase'
         required: true
+        default: 'p,s,d'
 
 permissions:
   id-token: write
