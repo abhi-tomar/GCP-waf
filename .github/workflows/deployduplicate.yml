@@ -5,10 +5,13 @@ on:
       phase:
         description: 'Phase'
         required: true
-        options:
-          - 'p'
-          - 'd'
-          - 'q'
+      choice:
+          type: choice
+          description: Select Phase      
+          options:
+            - 'p'
+            - 'd'
+            - 'q'
 
 permissions:
   id-token: write
