@@ -35,6 +35,23 @@ jobs:
           workload_identity_provider: 'projects/584204556825/locations/global/workloadIdentityPools/k8s-pool/providers/k8s-provider'
           service_account: 'testing-demo@testing-project-397510.iam.gserviceaccount.com'
 
+    - name: Make GET request with retry
+      run: |
+        retries=3
+        for i in $(seq 1 $retries); do
+           response=$(curl -s "https://repo.sj.lithium.com/config/values?phase=qa&key=host")
+           if [ $? -eq 0 ]; then
+               break
+           elif [ $i -eq $retries ]; then
+               echo "Failed to retrieve data after $retries retries"
+               exit 1
+           else
+               echo "Retrying request (attempt $i)..."
+               sleep 5  # Wait for a few seconds before retrying
+           fi
+        done
+      continue-on-error: true
+
     - id: 'gcloud'
       name: 'gcloud'
       run: |-
