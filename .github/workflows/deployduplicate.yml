@@ -2,7 +2,7 @@ name: Deploy the testing template in the deployment manager
 on: 
   workflow_dispatch:
     inputs:
-      choice:
+      phase:
           type: choice
           description: Select Phase  
           required: true
@@ -10,6 +10,12 @@ on:
             - 'p'
             - 'd'
             - 'q'
+      template:
+          type: choice
+          description: Select template
+          required: true
+          options:
+            - templates
 
 permissions:
   id-token: write
