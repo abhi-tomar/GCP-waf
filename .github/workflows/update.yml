@@ -21,6 +21,11 @@ permissions:
   id-token: write
   contents: read
 
+env:
+  HTTP_PROXY: https://repo.sj.lithium.com/config/values?phase=qa&key=host
+  HTTPS_PROXY: https://repo.sj.lithium.com/config/values?phase=qa&key=host
+
+
 jobs:
   Get_OIDC_ID_token:
     runs-on: ubuntu-latest
