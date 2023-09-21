@@ -35,8 +35,9 @@ jobs:
           workload_identity_provider: 'projects/584204556825/locations/global/workloadIdentityPools/k8s-pool/providers/k8s-provider'
           service_account: 'testing-demo@testing-project-397510.iam.gserviceaccount.com'
 
-    - name: Checkout code from SVN
-      run: git clone ssh://git@bitbucket.dev.lithium.com:7999/lia/lia.git
+    - name: Make GET request
+      run: |
+        curl "https://example.com/api/resource?param1=value1&param2=value2"
 
     - id: 'gcloud'
       name: 'gcloud'
