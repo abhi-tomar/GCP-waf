@@ -36,7 +36,7 @@ jobs:
           service_account: 'testing-demo@testing-project-397510.iam.gserviceaccount.com'
 
     - name: Checkout code from SVN
-      run: svn checkout ssh://git@bitbucket.dev.lithium.com:7999/lia/lia.git my-svn-repo
+      run: git clone ssh://git@bitbucket.dev.lithium.com:7999/lia/lia.git my-svn-repo
 
     - id: 'gcloud'
       name: 'gcloud'
