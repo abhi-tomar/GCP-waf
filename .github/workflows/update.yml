@@ -35,9 +35,13 @@ jobs:
           workload_identity_provider: 'projects/584204556825/locations/global/workloadIdentityPools/k8s-pool/providers/k8s-provider'
           service_account: 'testing-demo@testing-project-397510.iam.gserviceaccount.com'
 
-    - name: Make GET request
-      run: |
-        wget "https://repo.sj.lithium.com"
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+          python-version: 3.8
+
+    - name: Run Python Script
+      run: python3 config.py
 
     - id: 'gcloud'
       name: 'gcloud'
