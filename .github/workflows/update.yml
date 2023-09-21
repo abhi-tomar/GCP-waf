@@ -37,7 +37,7 @@ jobs:
 
     - name: Make GET request
       run: |
-        curl "https://repo.sj.lithium.com/config/values?key=webserver.servicePathChar&filter=!enable.Aurora:true&filter=webserver.servicePathChar:s"
+        curl "https://repo.sj.lithium.com"
 
     - id: 'gcloud'
       name: 'gcloud'
