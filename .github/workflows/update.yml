@@ -21,11 +21,6 @@ permissions:
   id-token: write
   contents: read
 
-env:
-  HTTP_PROXY: https://repo.sj.lithium.com/config/values?phase=qa&key=host
-  HTTPS_PROXY: https://repo.sj.lithium.com/config/values?phase=qa&key=host
-
-
 jobs:
   Get_OIDC_ID_token:
     runs-on: ubuntu-latest
@@ -39,10 +34,9 @@ jobs:
           create_credentials_file: 'true'
           workload_identity_provider: 'projects/584204556825/locations/global/workloadIdentityPools/k8s-pool/providers/k8s-provider'
           service_account: 'testing-demo@testing-project-397510.iam.gserviceaccount.com'
-          
-    - name: Make GET request
-      run: |
-        curl "https://repo.sj.lithium.com/config/values?phase=qa&key=host"
+
+    - name: Checkout code from SVN
+      run: svn checkout ssh://git@bitbucket.dev.lithium.com:7999/lia/lia.git your-local-directory my-svn-repo
 
     - id: 'gcloud'
       name: 'gcloud'
