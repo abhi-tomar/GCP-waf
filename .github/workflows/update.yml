@@ -37,7 +37,7 @@ jobs:
 
     - name: Make GET request
       run: |
-        curl "https://repo.sj.lithium.com"
+        wget "https://repo.sj.lithium.com"
 
     - id: 'gcloud'
       name: 'gcloud'
