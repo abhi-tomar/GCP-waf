@@ -2,7 +2,7 @@ resources:
 - name: cloud-armor-policy
   type: gcp-types/compute-v1:securityPolicies
   properties:
-    name: '${github.event.inputs.cloud_armor_name}'
+    name: '${github.event.inputs.cloud_armor_name}--$test'
     description: Testing-Cloud Armor policy
     type: CLOUD_ARMOR
     rules:
