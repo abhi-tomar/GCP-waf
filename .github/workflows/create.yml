@@ -20,6 +20,8 @@ on:
           type: text
           description: Enter cloud armor name
           required: true
+env:
+  test: $cloud_armor_name
 
 permissions:
   id-token: write
