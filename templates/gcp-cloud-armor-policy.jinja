@@ -14,6 +14,14 @@ resources:
         preview: true
         priority: 0
 
+      - description: Allow request from a specifc Header
+        match:
+          expr:
+            expression: 'request.headers["{{ properties["headername"] }}"] == R"{{ properties["headervalue"] }}"'
+        action: allow
+        preview: true
+        priority: 100
+
       - description: Default rule, higher priority overrides it
         match:
           versionedExpr: "SRC_IPS_V1" 
