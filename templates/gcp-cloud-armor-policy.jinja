@@ -1,0 +1,106 @@
+resources:
+- name: cloud-armor-policy
+  type: gcp-types/compute-v1:securityPolicies
+  properties:
+    name: lia-alb-waf-{{ properties["phaseShortname"] }}-{{ properties["WAFType"] }}-{{ properties["WAFNameSuffix"] }}
+    description: Cloud Armor policy for our communities
+    type: CLOUD_ARMOR
+    rules:
+      - description: Cross-site scripting
+        match:
+          expr:
+            expression: "evaluatePreconfiguredExpr('xss-v33-stable')"
+        action: deny(403)
+        preview: true
+        priority: 0
+
+      - description: Local file inclusion
+        match:
+          expr:
+            expression: "evaluatePreconfiguredExpr('lfi-v33-stable')"
+        action: deny(403)
+        preview: true
+        priority: 10
+
+      - description: Remote file inclusion
+        match:
+          expr:
+            expression: "evaluatePreconfiguredExpr('rfi-v33-stable')"
+        action: deny(403)
+        preview: true
+        priority: 20
+
+      - description: Remote code execution
+        match:
+          expr:
+            expression: "evaluatePreconfiguredExpr('rce-v33-stable') && !(request.query.matches('q='))"
+        action: deny(403)
+        preview: true
+        priority: 30
+
+      - description: Scanner detection
+        match:
+          expr:
+            expression: "evaluatePreconfiguredExpr('scannerdetection-v33-stable')"
+        action: deny(403)
+        preview: true
+        priority: 40
+
+      - description: Protocol attack
+        match:
+          expr:
+            expression: "evaluatePreconfiguredExpr('protocolattack-v33-stable')"
+        action: deny(403)
+        preview: true
+        priority: 50
+
+      - description: Session fixation attack
+        match:
+          expr:
+            expression: "evaluatePreconfiguredExpr('sessionfixation-v33-stable')"
+        action: deny(403)
+        preview: true
+        priority: 60
+
+      - description: Java attack
+        match:
+          expr:
+            expression: "evaluatePreconfiguredExpr('java-v33-stable')"
+        action: deny(403)
+        preview: true
+        priority: 70
+
+      - description: NodeJS attack
+        match:
+          expr:
+            expression: "evaluatePreconfiguredExpr('nodejs-v33-stable')"
+        action: deny(403)
+        preview: true
+        priority: 80
+
+      - description: CVEs and other vulnerabilities
+        match:
+          expr:
+            expression: "evaluatePreconfiguredExpr('cve-canary')"
+        action: deny(403)
+        preview: true
+        priority: 90
+
+      - description: Allow request from a specifc Header
+        match:
+          expr:
+            expression: 'request.headers["{{ properties["headername"] }}"] == R"{{ properties["headervalue"] }}"'
+        action: allow
+        preview: true
+        priority: 100
+
+      - description: Default rule, higher priority overrides it
+        match:
+          versionedExpr: "SRC_IPS_V1" 
+          config:
+            srcIpRanges: ["*"]  
+        action: deny(403) 
+        priority: 2147483647 
+
+    advancedOptionsConfig:
+        logLevel: VERBOSE      # To reduce logging, set this to NORMAL
