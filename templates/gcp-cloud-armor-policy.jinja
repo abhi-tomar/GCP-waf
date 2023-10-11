@@ -1,8 +1,8 @@
 resources:
-- name: cloud-armor-policy
+- name: lia-alb-waf-akshit-test
   type: gcp-types/compute-v1:securityPolicies
   properties:
-    name: lia-alb-waf-{{ properties["phaseShortname"] }}-{{ properties["WAFType"] }}-{{ properties["WAFNameSuffix"] }}
+    name: lia-alb-waf-akshit-test
     description: Cloud Armor policy for our communities
     type: CLOUD_ARMOR
     rules:
